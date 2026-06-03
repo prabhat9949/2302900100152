@@ -1,0 +1,11 @@
+target/
+.idea/
+.vscode/
+node_modules/
+src/test/
+target/
+.vscode/
+.idea/
+
+notification_app_be/target/
+notification_app_be/src/test/
