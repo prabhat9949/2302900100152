@@ -1,52 +1,84 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class VehicleMaintenanceScheduler {
 
-    public static void main(String[] args) {
+```
+static class Vehicle {
+    String taskId;
+    int duration;
+    int impact;
 
-        Scanner sc = new Scanner(System.in);
+    Vehicle(String taskId,int duration,int impact){
+        this.taskId = taskId;
+        this.duration = duration;
+        this.impact = impact;
+    }
+}
 
-        System.out.print("Enter number of vehicles: ");
-        int n = sc.nextInt();
+public static void main(String[] args) {
 
-        int[] duration = new int[n];
-        int[] impact = new int[n];
+    List<Vehicle> vehicles = new ArrayList<>();
 
-        System.out.println("Enter duration of each vehicle:");
+    vehicles.add(new Vehicle("ddcb068f",3,3));
+    vehicles.add(new Vehicle("bfea3f66",4,9));
+    vehicles.add(new Vehicle("4b9670a1",3,10));
+    vehicles.add(new Vehicle("2dd97aea",5,9));
 
-        for (int i = 0; i < n; i++) {
-            duration[i] = sc.nextInt();
-        }
+    int mechanicHours = 60;
 
-        System.out.println("Enter impact of each vehicle:");
+    int n = vehicles.size();
 
-        for (int i = 0; i < n; i++) {
-            impact[i] = sc.nextInt();
-        }
+    int[][] dp =
+            new int[n + 1][mechanicHours + 1];
 
-        System.out.print("Enter available mechanic hours: ");
-        int hours = sc.nextInt();
+    for(int i=1;i<=n;i++){
 
-        int[][] dp = new int[n + 1][hours + 1];
+        for(int w=0;w<=mechanicHours;w++){
 
-        for (int i = 1; i <= n; i++) {
+            dp[i][w]=dp[i-1][w];
 
-            for (int j = 1; j <= hours; j++) {
+            if(vehicles.get(i-1).duration<=w){
 
-                if (duration[i - 1] <= j) {
-
-                    dp[i][j] = Math.max(
-                            impact[i - 1] + dp[i - 1][j - duration[i - 1]],
-                            dp[i - 1][j]
-                    );
-
-                } else {
-
-                    dp[i][j] = dp[i - 1][j];
-                }
+                dp[i][w]=Math.max(
+                        dp[i][w],
+                        dp[i-1][w-
+                                vehicles.get(i-1).duration]
+                                + vehicles.get(i-1).impact
+                );
             }
         }
-
-        System.out.println("Maximum Impact: " + dp[n][hours]);
     }
+
+    System.out.println(
+            "Maximum Operational Impact = "
+                    + dp[n][mechanicHours]
+    );
+
+    List<String> selectedTasks =
+            new ArrayList<>();
+
+    int w = mechanicHours;
+
+    for(int i=n;i>0;i--){
+
+        if(dp[i][w] != dp[i-1][w]){
+
+            selectedTasks.add(
+                    vehicles.get(i-1).taskId
+            );
+
+            w -= vehicles.get(i-1).duration;
+        }
+    }
+
+    Collections.reverse(selectedTasks);
+
+    System.out.println(
+            "\nSelected Task IDs:"
+    );
+
+    selectedTasks.forEach(System.out::println);
+}
+```
+
 }

@@ -2,50 +2,40 @@ package com.project.notificationapp.model;
 
 public class Notification {
 
-    private int id;
-    private String title;
-    private String message;
-    private String type;
+    private String ID;
+    private String Type;
+    private String Message;
+    private String Timestamp;
 
-    public Notification() {
+    public String getID() {
+        return ID;
     }
 
-    public Notification(int id, String title, String message, String type) {
-        this.id = id;
-        this.title = title;
-        this.message = message;
-        this.type = type;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getType() {
-        return type;
+        return Type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        Type = type;
+    }
+
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(String message) {
+        Message = message;
+    }
+
+    public String getTimestamp() {
+        return Timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        Timestamp = timestamp;
     }
 }

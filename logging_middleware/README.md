@@ -1,13 +1,17 @@
 # Logging Middleware
 
-Simple logging utility.
+Simple logging utility used to record application events.
 
 Log Levels:
+
 - INFO
 - WARN
 - ERROR
 
-Example:
+Example Logs:
 
-INFO - Notification Created
-ERROR - Database Connection Failed
+INFO - Application Started
+
+INFO - Notification Retrieved
+
+ERROR - Invalid Request

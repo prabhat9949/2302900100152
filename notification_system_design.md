@@ -119,20 +119,21 @@ Better approach:
 This improves reliability and scalability.
 
 ---
-
 # Stage 6 - Priority Inbox
 
-Priority:
+Priority Rules:
 
-```text
 Placement = 3
-Result = 2
-Event = 1
-```
 
-Notifications are sorted by:
+Result = 2
+
+Event = 1
+
+Notifications are sorted using:
 
 1. Priority
-2. Latest Time
+2. Latest Timestamp
 
-For Top 10 notifications, a Priority Queue (Min Heap) can be used for efficient performance.
+Top 10 notifications are displayed to the user.
+
+A Priority Queue (Min Heap) can be used for efficient implementation.

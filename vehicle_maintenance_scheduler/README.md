@@ -1,11 +1,17 @@
 # Vehicle Maintenance Scheduler
 
-This solution uses Dynamic Programming (0/1 Knapsack).
+This project uses the 0/1 Knapsack Algorithm.
 
-Duration = Weight
+Inputs:
 
-Impact = Value
+- Vehicle Duration
+- Vehicle Impact
+- Mechanic Hours
 
-Mechanic Hours = Capacity
+Output:
 
-The program calculates the maximum maintenance impact that can be achieved within available mechanic hours.
+- Maximum Operational Impact
+- Selected Vehicle Tasks
+
+Mechanic Hours are obtained from Depot API.
+Vehicle data is obtained from Vehicle API.
