@@ -1,0 +1,6 @@
+Application Logs
+
+INFO - Application Started
+INFO - Notification Created
+INFO - Notification Retrieved
+ERROR - Invalid Request
